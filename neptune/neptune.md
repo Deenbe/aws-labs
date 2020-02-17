@@ -1,4 +1,4 @@
-## Creating a simple recommendation engine with Amazon Neptune
+## Creating a simple recommendation engine with Amazon Neptune (Level 200)
 In this lab you will learn the basics of how to use Amazon Neptune in order to create a recommendation system using collaborative filtering.
 
 ## Contents
