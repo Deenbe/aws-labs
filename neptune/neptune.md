@@ -77,7 +77,7 @@ Interactions with the Neptune Database will primarily be managed using Neptune N
 
 4.1.4. Click on **Open notebook** on the Jupyter notebook summary page. A new tab should appear.
 
-### 3.2 Creating a new IPython Notebook (.ipynb) file
+### 4.2 Creating a new IPython Notebook (.ipynb) file
 
 We have successfully navigated to the Jupyter notebook, from the Amazon Neptune web console page. We will now create a new Jupyter Notebook, and run some queries against the Neptune cluster.
 
@@ -87,7 +87,7 @@ We have successfully navigated to the Jupyter notebook, from the Amazon Neptune 
 
 4.2.2. A new tab should appear with the document ready for input.
 
-### 3.3 Confirming that you can connect to the Neptune Instance
+### 4.3 Confirming that you can connect to the Neptune Instance
 
 In the first cell, type in `%status` and hit **run**.
 
