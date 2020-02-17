@@ -10,9 +10,9 @@ In this lab you will learn the basics of how to use Amazon Neptune in order to c
 6. Graph Basics
 7. Create a simple recommendation engine
 8. Where to from here?
-9. Extras
-    9.1 Bulk Load Data
-    9.2 Backups
+9. Extras<br/>
+    9.1 Bulk Load Data<br/>
+    9.2 Backups<br/>
     9.3 Failover
 10. Legal
 
