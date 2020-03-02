@@ -1,4 +1,4 @@
-## Creating a simple recommendation engine with Amazon Neptune (Level 200)
+## Creating a simple recommendation engine with Amazon Neptune
 In this lab you will learn the basics of how to use Amazon Neptune in order to create a recommendation system using collaborative filtering.
 
 ## Contents
@@ -10,9 +10,9 @@ In this lab you will learn the basics of how to use Amazon Neptune in order to c
 6. Graph Basics
 7. Create a simple recommendation engine
 8. Where to from here?
-9. Extras<br/>
-    9.1 Bulk Load Data<br/>
-    9.2 Backups<br/>
+9. Extras
+    9.1 Bulk Load Data
+    9.2 Backups
     9.3 Failover
 10. Legal
 
@@ -22,6 +22,8 @@ In this lab you will learn the basics of how to use Amazon Neptune in order to c
 Gremlin and SparQL are the two main frameworks commonly used with modelling and interacting graph networks. Gremlin includes multiple language drivers for most programming languages.
 
 SparQL is an RDF query language - semantic query language for databases.
+
+<img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/gremlin-logo.png" height=150>
 
 ----
 
@@ -38,15 +40,13 @@ An Neptune Cluster consists of one or more DB instances. A Neptune DB cluster in
 
 You may use either the provided CloudFormation scripts [here](https://docs.aws.amazon.com/neptune/latest/userguide/get-started-create-cluster.html) or the simplified version provided below to create a Neptune Cluster in your AWS account.
 
+**Note: The above CloudFormation script requires you to have an existing SSH-keypair on your account**
+
 The following script automatically generates a Neptune Cluster, with 1 Instance. It also generates all of the networking, IAM policy stacks and route tables to create Neptune in a different VPC. However, as per recommendations please test on a different account with appropriate backups and also review in detail before using in any production environment.
 
-```
-aws cloudformation create-stack --stack-name NeptuneQuickStart \
---template-url "https://steven-neptune-cloudformation-scripts.s3-ap-southeast-2.amazonaws.com/neptune-full-stack-nested-template.json" \
---capabilities "CAPABILITY_NAMED_IAM" "CAPABILITY_AUTO_EXPAND"
-```
+**Note: For Sydney Summit, we will have provisioned the accounts with an existing SSH-keypair already to save time.**
 
-*The reference to the SSH PEM key has been removed in the above Cloudformation script, so you will not be able to SSH into the Neptune Notebook instance.*
+----
 
 ## 3. Setting up a Neptune Notebook
 
@@ -56,8 +56,14 @@ Interacting with the Neptune cluster can be performed through the Neptune workbe
 
 Workbench resources are billed under Amazon SageMaker, separately from Neptune.
 
-** Important **
+**Important**
+
 In order to use the workbench, the security group that you attach in the VPC where Neptune is running must have an additional rule that allows inbound connections from itself - otherwise you will not be able to connect to the Neptune cluster.
+
+
+**Note: For Sydney Summit, we will have provisioned the accounts with a Neptune Notebook to save time.**
+
+----
 
 [Please refer to the documentation for IAM Roles and IAM Policies required for the Notebooks](https://docs.aws.amazon.com/neptune/latest/userguide/notebooks.html)
 
@@ -79,7 +85,7 @@ Interactions with the Neptune Database will primarily be managed using Neptune N
 
 ### 4.2 Creating a new IPython Notebook (.ipynb) file
 
-We have successfully navigated to the Jupyter notebook, from the Amazon Neptune web console page. We will now create a new Jupyter Notebook, and run some queries against the Neptune cluster.
+As we have successfully navigated to the Jupyter notebook, from the Amazon Neptune web console page. We will now create a new Jupyter Notebook, and run some queries against the Neptune cluster.
 
 4.2.1. Clicking on the New dropdown, and select the **Python 3** option
 
@@ -125,6 +131,8 @@ Before we really get stuck in, we need to go through some definitions which we w
 
 A vertex, or vertice, is a denotation representing a discrete object, such as a person, place or event.
 
+*(Personally, i like to refer to a Vertex as a Node)*
+
 ### Edge
 
 An edge denotes a relationship between verticies, such as relationships, likes, or having been to a place, etc.
@@ -132,8 +140,12 @@ An edge denotes a relationship between verticies, such as relationships, likes, 
 ### Properties
 A vertex or edge may include properties, which express non-relational information. Examples include but are not limited to:
 
-- A person vertex can include user and age properties
-- A Edge can include timestamp and weight
+- A person vertex may include user and age properties
+- A Edge may include timestamp and weight
+
+![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/5_neptune.png)
+
+----
 
 ## 6. Graph Basics
 
@@ -145,7 +157,7 @@ Start by clearing all verticies
 ```
 %%gremlin
 
-g.V.drop()
+g.V.drop().iterate() # Drops all nodes
 ```
 
 and check that we don't have any verticies
@@ -154,13 +166,6 @@ and check that we don't have any verticies
 %%gremlin
 
 g.V()
-```
-
-and write a comment
-
-```
-%status # this is a comment
-
 ```
 
 ### 6.1 Create a Vertex
@@ -195,7 +200,7 @@ This syntax allows you to create a vertex, and give it a custom property key and
 You can also add multiple properties using the following syntax.
 
 ```
-%gremlin
+%%gremlin
 
 g.addV('person')
     .property('age', 17)
@@ -253,6 +258,8 @@ Breakdown explanation:
 3. We define which node it is, using a selector `.to(g.V('2'))`
 4. We define a property of `'likes'` with a value
 
+----
+
 ## 7. Create a simple social recommendation engine
 
 We are now going to attempt to create a simple social recommendation engine, which follows a couple of rules.
@@ -285,7 +292,7 @@ g.V("bob").outE()
 
 ```
 Total Results: 1
-1	e[b8b82641-08fd-dea8-5d35-0cbf5c2393a7][bob-FRIEND->jess]
+1   e[b8b82641-08fd-dea8-5d35-0cbf5c2393a7][bob-FRIEND->jess]
 ```
 
 ### 7.2 Adding more users
@@ -305,7 +312,7 @@ g.addV("person").property(id, "sarah")
 
 ```
 Total Results: 1
-1	e[ceb82646-6ed7-1553-22e2-812b2172753d][jess-FRIEND->charlotte]
+1   e[ceb82646-6ed7-1553-22e2-812b2172753d][jess-FRIEND->charlotte]
 ```
 
 ### 7.3 Friend Recommendation
@@ -320,8 +327,8 @@ g.V("bob").out("FRIEND").out("FRIEND")
 
 ```
 Total Results: 2
-1	v[sarah]
-2	v[charlotte]
+1   v[sarah]
+2   v[charlotte]
 ```
 
 What is happening here is that we are `traversing` from `Bob`, and navigating outwards to other Verticies that are `FRIENDS`. We are then traversing from those `Verticies`, out to other `Friends`.
@@ -337,24 +344,35 @@ Well we can utilise a `strength property` to denote whether the traversal applie
 
 ### 7.4.1 Start by clearing the graph database
 ```
-%% gremlin
+%%gremlin
 
-g.V().drop()
+g.V().drop().iterate()
 ```
 
 ### 7.4.2 Create the following Vertex network
+![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/7.4.2_neptune.png)
 
-```
-%%gremlin
+Try and create the above network, you can click below to reveal the code if you get stuck.
 
-g.addV('person').property(id, "bob")
- .addV('person').property(id, "jess")
- .addV("person").property(id, "sarah")
- .addV("person").property(id, "charlotte")
- .V("jess").addE("FRIEND").to(g.V("sarah")).property("strength", 0.5)
- .V("jess").addE("FRIEND").to(g.V("charlotte")).property("strength", 2)
- .V("bob").addE('FRIEND').to(g.V("jess")).property("strength", 1)
- ```
+<details>
+    <summary>Unveil Code</summary>
+
+    %%gremlin
+
+    g.addV('person').property(id, "bob")
+    .addV('person').property(id, "jess")
+    .addV("person").property(id, "sarah")
+    .addV("person").property(id, "charlotte")
+    .V("jess").addE("FRIEND").to(g.V("sarah")).property("strength", 0.5)
+    .V("jess").addE("FRIEND").to(g.V("charlotte")).property("strength", 2)
+    .V("bob").addE('FRIEND').to(g.V("jess")).property("strength", 1)
+</details>
+
+----
+
+### 7.4.3 Evaluating paths based strength
+
+We will now find outgoing edges from the "bob" vertex, given that "bob's" friendship is above a certain value.
 
 ```
 %%gremlin
@@ -364,19 +382,23 @@ g.V("bob").outE("FRIEND").has("strength", P.gte(1))
 
 The syntax `P` denotes that given an object, evaluate whether the result is `true` or `false`. In this example its "greater-than-or-equal to 1.
 
+*Question: Will the query above traverse through to both vertexes? Or only through one if applied to the network below?*
+
+![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/7.4.3_neptune.png)
+
+----
+
 ```
 %%gremlin
 
 g.V("bob").outE("FRIEND").has("strength", P.gte(1)).otherV()
 ```
 
-otherV = move to another vertex that is not the vertex it came from.
+`otherV` = move to another vertex that is not the vertex it came from.
 
-```
-%%gremlin
+----
 
-g.V("bob").outE("FRIEND").has("strength", P.gte(1)).otherV().outE("FRIEND").has("strength", P.gte(1))
-```
+### 7.4.4 Build the traversal
 
 We can now build the traversal to do the following:
 
@@ -384,37 +406,57 @@ We can now build the traversal to do the following:
 
 This means that Sarah will not appear as the strength is only `0.5`, while Charlotte is `2`.
 
-```
-e[4ab8264f-b637-ab4e-5001-596ea652439e][jess-FRIEND->charlotte]
-```
+Try and write the above statement as a query, you can refer to the code below if you get stuck
+
+<details>
+    <summary>Unveil Code</summary>
+
+    %%gremlin
+
+    g.V("bob").outE("FRIEND").has("strength", P.gte(1)).otherV().outE("FRIEND").has("strength", P.gte(1))
+
+    e[4ab8264f-b637-ab4e-5001-596ea652439e][jess-FRIEND->charlotte]
+</details>
+
+----
+
+### 7.4.5 Changing the traversal
 
 Try changing the `gte` value of the queries to see the traversal results change. 
 
 First strength value is > 1, should return 0 results
-```
-%%gremlin
 
-g.V("bob").outE("FRIEND").has("strength", P.gte(2)).otherV().outE("FRIEND").has("strength", P.gte(0.4))
+<details>
+    <summary>Unveil Code</summary>
 
-Total Results: 0
-```
+    %%gremlin
+
+    g.V("bob").outE("FRIEND").has("strength", P.gte(2)).otherV().outE("FRIEND").has("strength", P.gte(0.4))
+
+    Total Results: 0
+</details>
+
 
 Second strength value is > 0.4, should show two results
-```
-%%gremlin
+<details>
+    <summary>Unveil Code</summary>
 
-g.V("bob").outE("FRIEND").has("strength", P.gte(1)).otherV().outE("FRIEND").has("strength", P.gte(0.4))
+    %%gremlin
 
-Total Results: 2
-1	e[08b8264f-b637-6bf2-04b4-de13b7682328][jess-FRIEND->sarah]
-2	e[4ab8264f-b637-ab4e-5001-596ea652439e][jess-FRIEND->charlotte]
-```
+    g.V("bob").outE("FRIEND").has("strength", P.gte(1)).otherV().outE("FRIEND").has("strength", P.gte(0.4))
+
+    Total Results: 2
+    1   e[08b8264f-b637-6bf2-04b4-de13b7682328][jess-FRIEND->sarah]
+    2   e[4ab8264f-b637-ab4e-5001-596ea652439e][jess-FRIEND->charlotte]
+</details>
+
+----
 
 ## Where to from here?
 
-We have only scratched the surface of what we can accomplish with a Graph Database. We can build even more complex relationships - such as item and music recommendations, while including properties and other rules that change what Verticies are able to be traversed.
+We have only scratched the surface of what we can accomplish with a Graph Database. We can build even more complex relationships - such as item and music recommendations, while including properties and other rules which change what Verticies are able to be traversed.
 
-Please refer to the Gremlin recipes link included at the bottom of the lab for more inspiration.
+[Please refer to the Gremlin recipes link included for more inspiration.](http://tinkerpop.apache.org/docs/current/recipes/#recommendation)
 
 ----
 
@@ -518,11 +560,13 @@ The `.next()` step does not work with `.drop()`. Use `.iterate()` instead.
 - Gremlin Recipes
     - http://tinkerpop.apache.org/docs/current/recipes/#recommendation
 
-## Feedback
+<img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/gremlin-lab-coat.png" height=200>
 
-If you have any feedback, concerns or would like to have a chat, just send me an email.
+Apache Foundation and [Ketrina Yim](https://ketrinayim.tumblr.com/), who designer behind Gremlin and his TinkerPop friends.
 
-## Author 
+## Author & Feedback
+
+If you have any feedback, concerns or would like to have a chat, please send me an email.
 
 Steven Tseng (stetseng@amazon.com)
 
