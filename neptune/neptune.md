@@ -558,8 +558,7 @@ The `.next()` step does not work with `.drop()`. Use `.iterate()` instead.
 
 - Official Documentation
     - https://docs.aws.amazon.com/neptune/latest/userguide/get-started-create-cluster.html
-    - Cloudformation NOTES
-        - A SSH key pair is required to access the EC2 instance, and run the Cloudformation script. Please ensure that you define an existing SSH file, when running the Cloudformation script.
+        - *A SSH key pair is required to access the EC2 instance, and run the Cloudformation script. Please ensure that you define an existing SSH file, when running the Cloudformation script.*
 
 - Blog Post
     - https://aws.amazon.com/blogs/database/analyze-amazon-neptune-graphs-using-amazon-sagemaker-jupyter-notebooks/
