@@ -44,7 +44,7 @@ You may use either the provided CloudFormation scripts [here](https://docs.aws.a
 
 The following script automatically generates a Neptune Cluster, with 1 Instance. It also generates all of the networking, IAM policy stacks and route tables to create Neptune in a different VPC. However, as per recommendations please test on a different account with appropriate backups and also review in detail before using in any production environment.
 
-**Note: For Sydney Summit, we will have provisioned the accounts with an existing SSH-keypair already to save time.**
+**Note: For Sydney Summit, we have provisioned the accounts with an existing SSH-keypair already to save time.**
 
 ----
 
@@ -61,7 +61,7 @@ Workbench resources are billed under Amazon SageMaker, separately from Neptune.
 In order to use the workbench, the security group that you attach in the VPC where Neptune is running must have an additional rule that allows inbound connections from itself - otherwise you will not be able to connect to the Neptune cluster.
 
 
-**Note: For Sydney Summit, we will have provisioned the accounts with a Neptune Notebook to save time.**
+**Note: For Sydney Summit, we have provisioned the accounts with a Neptune Notebook to save time.**
 
 ----
 
