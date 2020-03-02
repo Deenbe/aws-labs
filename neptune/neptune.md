@@ -398,7 +398,7 @@ g.V("bob").outE("FRIEND").has("strength", P.gte(1)).otherV()
 
 We can now build the traversal to do the following:
 
-1. Given the start from "Bob", traverse outwards on Edges of type "FRIEND" and has "strength" of greater than 1. Move to another vertex that is not the vertex it came from, and then navigate outwards to edges that are also `FRIEND` and has a `strength of greater than 1`. 
+- Given the start from "Bob", traverse outwards on Edges of type "FRIEND" and has "strength" of greater than 1. Move to another vertex that is not the vertex it came from, and then navigate outwards to edges that are also `FRIEND` and has a `strength of greater than 1`. 
 
 This means that Sarah will not appear as the strength is only `0.5`, while Charlotte is `2`.
 
@@ -406,12 +406,32 @@ Try and write the above statement as a query, you can refer to the code below if
 
 <details>
     <summary>Unveil Code</summary>
+    <p>
 
-    %%gremlin
+```
+%%gremlin
 
-    g.V("bob").outE("FRIEND").has("strength", P.gte(1)).otherV().outE("FRIEND").has("strength", P.gte(1))
+g.V("bob").outE("FRIEND")           # 1
+    .has("strength", P.gte(1))      # 2
+    .otherV().outE("FRIEND")        # 3
+        .has("strength", P.gte(1))  # 4
 
-    e[4ab8264f-b637-ab4e-5001-596ea652439e][jess-FRIEND->charlotte]
+e[4ab8264f-b637-ab4e-5001-596ea652439e][jess-FRIEND->charlotte]
+```
+
+![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/7.4.4_neptune.png)
+
+Visualising this is easier if you break down the traversal process into 4 distinct steps.
+
+1. From the vertex
+2. Leaving the vertex via an edge
+3. Comparing the edge properties if it fulfils a condition
+4. Entering a vertex from an edge
+
+![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/7.4.4_2_neptune.png)
+
+For more information on graph traversals, [please refer to the Neo4j documentation.](https://neo4j.com/blog/graph-algorithms-neo4j-15-different-graph-algorithms-and-what-they-do/)
+</p>
 </details>
 
 ----
@@ -470,10 +490,14 @@ The Neptune **Loader** supports both RDF (Resource Description Framework) and Gr
 
 ![Image](https://docs.aws.amazon.com/neptune/latest/userguide/images/load-diagram.png)
 
+----
+
 ## Backups
 Amazon Neptune supports cluster snapshots and restoration.
 
 [Please refer to the official documentation to learn more](https://docs.aws.amazon.com/neptune/latest/userguide/backup-restore.html)
+
+----
 
 ## High Availability & Failover
 
@@ -484,6 +508,8 @@ If a DB cluster is in a single Availability Zone, you can make it Multi-AZ by ad
 As of 18-FEB-2020, Neptune supports up to 15 Neptune replicas to process read-only queries.
 
 [Please refer to the official documentation to learn more](https://docs.aws.amazon.com/neptune/latest/userguide/feature-overview-availability.html)
+
+----
 
 ## Dates
 
@@ -556,9 +582,14 @@ The `.next()` step does not work with `.drop()`. Use `.iterate()` instead.
 - Gremlin Recipes
     - http://tinkerpop.apache.org/docs/current/recipes/#recommendation
 
+- Neo4j Traversal Algorithms
+    - https://neo4j.com/blog/graph-algorithms-neo4j-15-different-graph-algorithms-and-what-they-do/
+
 <img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/gremlin-lab-coat.png" height=200>
 
-Apache Foundation and [Ketrina Yim](https://ketrinayim.tumblr.com/), who designer behind Gremlin and his TinkerPop friends.
+*Special thanks to Apache Foundation and [Ketrina Yim](https://ketrinayim.tumblr.com/), who is the designer behind Gremlin and his TinkerPop friends.*
+
+----
 
 ## Author & Feedback
 
