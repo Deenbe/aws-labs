@@ -42,7 +42,7 @@ You may use the [provided CloudFormation script](https://docs.aws.amazon.com/nep
 
 **Note: The above CloudFormation script requires you to have an existing SSH-keypair on your account**
 
-The following script automatically generates a Neptune Cluster, with 1 Instance. It also generates all of the networking, IAM policy stacks and route tables to create Neptune in a different VPC. However, as per recommendations please test on a different account with appropriate backups and also review in detail before using in any production environment.
+The above CloudFormation script automatically generates a Neptune Cluster with 1 instance. The CloudFormation script also generates all required networking, IAM policy stacks and route tables to create Neptune resources within a different VPC. However, as per recommendations, please test on a different account with appropriate backups and review in detail before using within any production environment.
 
 **Note: For Sydney Summit, we will have provisioned the accounts with an existing SSH-keypair already to save time.**
 
@@ -558,7 +558,7 @@ The `.next()` step does not work with `.drop()`. Use `.iterate()` instead.
 
 - Official Documentation
     - https://docs.aws.amazon.com/neptune/latest/userguide/get-started-create-cluster.html
-        - *A SSH key pair is required to access the EC2 instance, and run the Cloudformation script. Please ensure that you define an existing SSH file, when running the Cloudformation script.*
+        - *A SSH key pair is required to access the EC2 instance, and run the CloudFormation script. Please ensure that you define an existing SSH file, when running the CloudFormation script.*
 
 - Blog Post
     - https://aws.amazon.com/blogs/database/analyze-amazon-neptune-graphs-using-amazon-sagemaker-jupyter-notebooks/
