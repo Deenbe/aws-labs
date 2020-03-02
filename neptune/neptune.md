@@ -405,7 +405,7 @@ This means that Sarah will not appear as the strength is only `0.5`, while Charl
 Try and write the above statement as a query, you can refer to the code below if you get stuck
 
 <details>
-    <summary>Unveil Code</summary>
+    <summary>Click here to unveil</summary>
     <p>
 
 ```
@@ -443,7 +443,7 @@ Try changing the `gte` value of the queries to see the traversal results change.
 First strength value is > 1, should return 0 results
 
 <details>
-    <summary>Unveil Code</summary>
+    <summary>Click here to unveil</summary>
 
     %%gremlin
 
@@ -455,7 +455,7 @@ First strength value is > 1, should return 0 results
 
 Second strength value is > 0.4, should show two results
 <details>
-    <summary>Unveil Code</summary>
+    <summary>Click here to unveil</summary>
 
     %%gremlin
 
