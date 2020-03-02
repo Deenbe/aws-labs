@@ -453,7 +453,7 @@ First strength value is > 1, should return 0 results
 </details>
 
 
-Second strength value is > 0.4, should show two results
+Second strength value is > 0.4, should show 2 results
 <details>
     <summary>Click here to unveil</summary>
 
