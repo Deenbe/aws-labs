@@ -38,7 +38,7 @@ An Neptune Cluster consists of one or more DB instances. A Neptune DB cluster in
     - It is recommended to at least have one replica in a different Availability Zone to support automatic fail-over in the event of an outage.
     - Fail-over priority can also be specified.
 
-You may use either the provided CloudFormation scripts [here](https://docs.aws.amazon.com/neptune/latest/userguide/get-started-create-cluster.html) or the simplified version provided below to create a Neptune Cluster in your AWS account.
+You may use the [provided CloudFormation script](https://docs.aws.amazon.com/neptune/latest/userguide/get-started-create-cluster.html) to create a Neptune Cluster in your AWS account.
 
 **Note: The above CloudFormation script requires you to have an existing SSH-keypair on your account**
 
