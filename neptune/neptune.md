@@ -44,7 +44,7 @@ You may use either the provided CloudFormation scripts [here](https://docs.aws.a
 
 The following script automatically generates a Neptune Cluster, with 1 Instance. It also generates all of the networking, IAM policy stacks and route tables to create Neptune in a different VPC. However, as per recommendations please test on a different account with appropriate backups and also review in detail before using in any production environment.
 
-**Note: For Sydney Summit, we have provisioned the accounts with a SSH-keypair to save time.**
+**Note: For Sydney Summit, we will have provisioned the accounts with an existing SSH-keypair already to save time.**
 
 ----
 
@@ -61,7 +61,7 @@ Workbench resources are billed under Amazon SageMaker, separately from Neptune.
 In order to use the workbench, the security group that you attach in the VPC where Neptune is running must have an additional rule that allows inbound connections from itself - otherwise you will not be able to connect to the Neptune cluster.
 
 
-**Note: For Sydney Summit, we have provisioned the accounts with a Neptune Notebook to save time.**
+**Note: For Sydney Summit, we will have provisioned the accounts with a Neptune Notebook to save time.**
 
 ----
 
@@ -272,7 +272,7 @@ We are now going to attempt to create a simple social recommendation engine, whi
 
 The following code will generate a Graph Database with the following verticies, and edges.
 
-![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/6.1_simple_users.png)
+<img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/6.1_simple_users.png" height=250 />
 
 ```
 %%gremlin
@@ -292,14 +292,14 @@ g.V("bob").outE()
 
 ```
 Total Results: 1
-1   e[b8b82641-08fd-dea8-5d35-0cbf5c2393a7][bob-FRIEND->jess]
+1	e[b8b82641-08fd-dea8-5d35-0cbf5c2393a7][bob-FRIEND->jess]
 ```
 
 ### 7.2 Adding more users
 
 We will expand upon our graph network by adding another user, and making them Jess's friend.
 
-![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/62_friend.png)
+<img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/62_friend.png" height=300 />
 
 ```
 %%gremlin
@@ -308,11 +308,9 @@ g.addV("person").property(id, "sarah")
  .addV("person").property(id, "charlotte")
  .V("jess").addE("FRIEND").to(g.V("sarah"))
  .V("jess").addE("FRIEND").to(g.V("charlotte"))
-```
 
-```
 Total Results: 1
-1   e[ceb82646-6ed7-1553-22e2-812b2172753d][jess-FRIEND->charlotte]
+1	e[ceb82646-6ed7-1553-22e2-812b2172753d][jess-FRIEND->charlotte]
 ```
 
 ### 7.3 Friend Recommendation
@@ -323,17 +321,15 @@ We can now create a really simple friend recommendation.
 %%gremlin
 
 g.V("bob").out("FRIEND").out("FRIEND")
-```
 
-```
 Total Results: 2
-1   v[sarah]
-2   v[charlotte]
+1	v[sarah]
+2	v[charlotte]
 ```
 
 What is happening here is that we are `traversing` from `Bob`, and navigating outwards to other Verticies that are `FRIENDS`. We are then traversing from those `Verticies`, out to other `Friends`.
 
-![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/63_traversal.png)
+<img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/63_traversal.png" height=300 />
 
 ### 7.4 Friend Strengths to Improve Recommendations
 
@@ -446,8 +442,8 @@ Second strength value is > 0.4, should show two results
     g.V("bob").outE("FRIEND").has("strength", P.gte(1)).otherV().outE("FRIEND").has("strength", P.gte(0.4))
 
     Total Results: 2
-    1   e[08b8264f-b637-6bf2-04b4-de13b7682328][jess-FRIEND->sarah]
-    2   e[4ab8264f-b637-ab4e-5001-596ea652439e][jess-FRIEND->charlotte]
+    1	e[08b8264f-b637-6bf2-04b4-de13b7682328][jess-FRIEND->sarah]
+    2	e[4ab8264f-b637-ab4e-5001-596ea652439e][jess-FRIEND->charlotte]
 </details>
 
 ----
@@ -562,7 +558,7 @@ The `.next()` step does not work with `.drop()`. Use `.iterate()` instead.
 
 <img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/gremlin-lab-coat.png" height=200>
 
-Apache Foundation and [Ketrina Yim](https://ketrinayim.tumblr.com/), who is the designer behind Gremlin and his TinkerPop friends.
+Apache Foundation and [Ketrina Yim](https://ketrinayim.tumblr.com/), who designer behind Gremlin and his TinkerPop friends.
 
 ## Author & Feedback
 
