@@ -587,7 +587,7 @@ The `.next()` step does not work with `.drop()`. Use `.iterate()` instead.
 
 <img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/gremlin-lab-coat.png" height=200>
 
-*Special thanks to Apache Foundation and [Ketrina Yim](https://ketrinayim.tumblr.com/), who is the designer behind Gremlin and his TinkerPop friends.*
+*Special thanks to [Neo4j](https://neo4j.com/), [Apache TinkerPop&trade;](http://tinkerpop.apache.org/), [W3C](https://www.w3.org/) and [Ketrina Yim](https://ketrinayim.tumblr.com/), who is the designer behind Gremlin and his TinkerPop friends.*
 
 ----
 
