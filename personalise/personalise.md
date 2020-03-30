@@ -1,10 +1,19 @@
 ## Creating a recommendation using Amazon Personalize
 In this lab you will learn the basics of how to use Amazon Personalize in order to create a recommendation system.
 
+![image](https://d1.awsstatic.com/r2018/r/Concierge/product-page-diagram_amazon_personalize_how-it-works.3ceac8883c7d6bd67d7cf26d8a7d505520d02a40.png)
+
 ## Contents
 1. Concepts & Definitions
 2. Preparing your data
-3. References
+3. Creating your Personalize Dataset
+4. Creating & Training your Personalize Solution
+5. Retrieving a Recommendation
+6. Personalize CLI
+7. Personalize Programmatic SDK
+8. Author & Feedback
+
+----
 
 ## 1. Concepts & Definitions
 
@@ -31,7 +40,7 @@ In this lab you will learn the basics of how to use Amazon Personalize in order 
 
 ## 2. Preparing your data
 
-In order to use personalise, you need to have a csv dataset of each of these types:
+In order to use personalize, you need to have a csv dataset of each of these types:
 
 1. Users
 2. Items
@@ -57,7 +66,7 @@ You may also use the following dataset schemas available below:
 
 ----
 
-## 3. Creating your Personalise Dataset Group
+## 3. Creating your Personalize Dataset Group
 
 ### 3.1 Start by creating your dataset, by providing a memorable name.
 
@@ -89,7 +98,9 @@ Once you have successfully imported all three data types, you may move onto crea
 
 <img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/06-dataset-import.png" height=200>
 
-## Creating & Training a Personalise Solution
+----
+
+## 4. Creating & Training your Personalize Solution
 
 Currently, as of 26-MAR-2020, Amazon Personalize in Sydney region supports the following algorithms:
 
@@ -102,7 +113,61 @@ Currently, as of 26-MAR-2020, Amazon Personalize in Sydney region supports the f
 | aws-popularity-count | Calculates popularity of items based on total number of events for each item in the user-item interactions dataset. |
 | aws-sims | Computes items similar to a given item based on co-occurrence of items in the user-item interactions dataset. |
 
-## Retrieving a Recommendation
+**Note**
+
+In order to train your solution, ensure that *Amazon Personalize* has access to the S3 bucket. (S3 > Permissions > Bucket Policy)
+
+```
+# S3 Bucket Policy
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:ListBucket",
+            "Resource": <bucket>
+        },
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "<bucket>/*"
+        }
+    ]
+}
+```
+-----
+
+## 5. Retrieving a Recommendation
 
 Once the Solution has been made available, you can pass a user id in using a SDK, and view the recommendation.
 
+<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/08-solution-01.png" width=400 />
+<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/08-solution-02.png" width=400 />
+
+----
+
+## 6. Personalize CLI
+
+For Running a personalize campaign using CLI, you can use the command below:
+
+```
+aws personalize-runtime get-recommendations --campaign-arn <arn> --user-id <userid>
+```
+
+----
+
+## 7. Personalize Programmatic SDK
+Please see the documentation [here](https://docs.aws.amazon.com/personalize/latest/dg/getting-started-python.html) for running Personalize using Python, or another language like [nodejs](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Personalize.html).
+
+----
+
+## 8. Author & Feedback
+
+If you have any feedback, concerns or would like to have a chat, please send me an email.
+
+Steven Tseng (stetseng@amazon.com)
+
+Solutions Architect - Digital Natives MEL/SYD
