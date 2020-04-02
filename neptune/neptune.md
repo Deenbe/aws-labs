@@ -12,32 +12,34 @@ In this lab you will learn the basics of how to use Amazon Neptune in order to c
 2. Language & Framework Definitions
 3. Creating your very first Amazon Neptune Cluster
 4. Setting up a Neptune Notebook
-5. Interacting with your Neptune Database
-	5.1 Navigating to a Neptune Notebook
-	5.2 Creating a new IPython Notebook
-	5.3 Confirming that you can connect to the Neptune Instance
+5. Interacting with your Neptune Database  
+	5.1 Navigating to a Neptune Notebook  
+	5.2 Creating a new IPython Notebook  
+	5.3 Confirming that you can connect to the Neptune Instance  
 6. Graph Definitions
-7. Graph Basics
-	7.1 Create a Vertex
-	7.2 Create a Vertex with a property
-	7.3 Show all Verticies
-	7.4 Drop a Vertex
-	7.5 Edges
-8. Create a simple recommendation engine
-	8.1 Creation of the Verticies
-	8.2 Adding more users
-	8.3 Friend Recommendation
-	8.4 Friend Strengths to Improve Recommendations
+7. Graph Basics  
+	7.1 Create a Vertex  
+	7.2 Create a Vertex with a property  
+	7.3 Show all Verticies  
+	7.4 Drop a Vertex  
+	7.5 Edges  
+8. Create a simple recommendation engine  
+	8.1 Creation of the Verticies  
+	8.2 Adding more users  
+	8.3 Friend Recommendation  
+	8.4 Friend Strengths to Improve Recommendations  
 9. Where to from here?
-10. Extras
-    10.1 Data Import
-    10.2 Backups
-    10.3 High Availability & Failover
-    10.4 Dates
-    10.5 Iterators and next()
+10. Extras  
+    10.1 Data Import  
+    10.2 Backups  
+    10.3 High Availability & Failover  
+    10.4 Dates  
+    10.5 Iterators and next()  
 11. Final Steps
 12. References
 13. Author & Feedback
+
+----
 
 ## 1. Pricing & Length of Lab
 
@@ -50,6 +52,8 @@ The provided CloudFormation script uses by default a db.r4.xlarge instance, whic
 This lab aims to take about 10-20 minutes, which equates to roughly <$0.44.
 
 **Make sure to delete the CloudFormation Script after you have finished, otherwise you will incur additional costs.**
+
+----
 
 ## 2. Language & Framework Definitions
 
