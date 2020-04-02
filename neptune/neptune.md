@@ -1,22 +1,57 @@
 ## Creating a simple recommendation engine with Amazon Neptune
 In this lab you will learn the basics of how to use Amazon Neptune in order to create a recommendation system using collaborative filtering.
 
-## Contents
-1. Language & Framework Definitions
-2. Creating your very first Amazon Neptune Cluster
-3. Setting up a Neptune Notebook
-4. Interacting with your Neptune Database
-5. Graph Definitions
-6. Graph Basics
-7. Create a simple recommendation engine
-8. Where to from here?
-9. Extras
-    9.1 Bulk Load Data
-    9.2 Backups
-    9.3 Failover
-10. Legal
+### How it works
 
-## 1. Definitions
+![image](https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_Neptune.85fa1536c4a013c5f291b930985032d693dd8111.png)
+
+-----
+
+## Contents
+1. Pricing & Length of Lab
+2. Language & Framework Definitions
+3. Creating your very first Amazon Neptune Cluster
+4. Setting up a Neptune Notebook
+5. Interacting with your Neptune Database
+	5.1 Navigating to a Neptune Notebook
+	5.2 Creating a new IPython Notebook
+	5.3 Confirming that you can connect to the Neptune Instance
+6. Graph Definitions
+7. Graph Basics
+	7.1 Create a Vertex
+	7.2 Create a Vertex with a property
+	7.3 Show all Verticies
+	7.4 Drop a Vertex
+	7.5 Edges
+8. Create a simple recommendation engine
+	8.1 Creation of the Verticies
+	8.2 Adding more users
+	8.3 Friend Recommendation
+	8.4 Friend Strengths to Improve Recommendations
+9. Where to from here?
+10. Extras
+    10.1 Data Import
+    10.2 Backups
+    10.3 High Availability & Failover
+    10.4 Dates
+    10.5 Iterators and next()
+11. Final Steps
+12. References
+13. Author & Feedback
+
+## 1. Pricing & Length of Lab
+
+Before you begin on this lab, be aware that the cost to run a Neptune cluster may be prohibitive to some users.
+
+https://aws.amazon.com/neptune/pricing/
+
+The provided CloudFormation script uses by default a db.r4.xlarge instance, which as of 03-APR-2020 is $0.84 per hour. 
+
+This lab aims to take about 10-20 minutes, which equates to roughly <$0.44.
+
+**Make sure to delete the CloudFormation Script after you have finished, otherwise you will incur additional costs.**
+
+## 2. Language & Framework Definitions
 
 ### Gremlin ([Apache TinkerPop™](http://tinkerpop.apache.org)) / [SparQL](https://www.w3.org/TR/sparql11-overview/) (*Pronounced Sparkle*)
 Gremlin and SparQL are the two main frameworks commonly used with modelling and interacting graph networks. Gremlin includes multiple language drivers for most programming languages.
@@ -27,7 +62,7 @@ SparQL is an RDF query language - semantic query language for databases.
 
 ----
 
-## 2. Creating your very first Amazon Neptune Cluster
+## 3. Creating your very first Amazon Neptune Cluster
 
 An Neptune Cluster consists of one or more DB instances. A Neptune DB cluster instance can span multiple Availability Zones, which each AZ having a copy of the DB cluster data. Two types of DB instances make up a Neptune DB Cluster:
 
@@ -38,7 +73,9 @@ An Neptune Cluster consists of one or more DB instances. A Neptune DB cluster in
     - It is recommended to at least have one replica in a different Availability Zone to support automatic fail-over in the event of an outage.
     - Fail-over priority can also be specified.
 
-You may use the [provided CloudFormation script](https://docs.aws.amazon.com/neptune/latest/userguide/get-started-create-cluster.html) to create a Neptune Cluster in your AWS account.
+You may use the provided [CloudFormation script](https://docs.aws.amazon.com/neptune/latest/userguide/get-started-create-cluster.html) to create a Neptune Cluster in your AWS account.
+
+*Please check that you have the appropriate prerequisites, otherwise the CloudFormation script will fail*
 
 **Note: The above CloudFormation script requires you to have an existing SSH-keypair on your account**
 
@@ -48,7 +85,7 @@ The above CloudFormation script automatically generates a Neptune Cluster with 1
 
 ----
 
-## 3. Setting up a Neptune Notebook
+## 4. Setting up a Neptune Notebook
 
 Interacting with the Neptune cluster can be performed through the Neptune workbench. The workbench uses Jupyter notebooks hosted by Amazon SageMaker.
 
@@ -67,33 +104,33 @@ In order to use the workbench, the security group that you attach in the VPC whe
 
 [Please refer to the documentation for IAM Roles and IAM Policies required for the Notebooks](https://docs.aws.amazon.com/neptune/latest/userguide/notebooks.html)
 
-## 4. Interacting with your Neptune Database
+## 5. Interacting with your Neptune Database
 
 Interactions with the Neptune Database will primarily be managed using Neptune Notebooks and Gremlin Syntax. An alternative language is SparQL, however Gremlin syntax will be shown in this document.
 
-### 4.1. Navigating to the Neptune Notebook
+### 5.1. Navigating to the Neptune Notebook
 
-4.1.1 Start by navigating to the Amazon Neptune service by using the search field, or the product list on your AWS Web Console.
+5.1.1 Start by navigating to the Amazon Neptune service by using the search field, or the product list on your AWS Web Console.
 
-4.1.2. Within the Neptune service, click on the Sidebar to expand the menu.
+5.1.2. Within the Neptune service, click on the Sidebar to expand the menu.
 
 ![NeptuneSidebar](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/neptune_sidebar.png)
 
-4.1.3. Click on the **Notebooks** option, and click on the **Neptune Notebook** that should have been created for you.
+5.1.3. Click on the **Notebooks** option, and click on the **Neptune Notebook** that should have been created for you.
 
-4.1.4. Click on **Open notebook** on the Jupyter notebook summary page. A new tab should appear.
+5.1.4. Click on **Open notebook** on the Jupyter notebook summary page. A new tab should appear.
 
-### 4.2 Creating a new IPython Notebook (.ipynb) file
+### 5.2 Creating a new IPython Notebook (.ipynb) file
 
 As we have successfully navigated to the Jupyter notebook, from the Amazon Neptune web console page. We will now create a new Jupyter Notebook, and run some queries against the Neptune cluster.
 
-4.2.1. Clicking on the New dropdown, and select the **Python 3** option
+5.2.1. Clicking on the New dropdown, and select the **Python 3** option
 
 ![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/neptune-juypter-setup-01.png)
 
-4.2.2. A new tab should appear with the document ready for input.
+5.2.2. A new tab should appear with the document ready for input.
 
-### 4.3 Confirming that you can connect to the Neptune Instance
+### 5.3 Confirming that you can connect to the Neptune Instance
 
 In the first cell, type in `%status` and hit **run**.
 
@@ -123,7 +160,7 @@ If everything goes according to plan, you should see an output similar to:
 
 ----
 
-## 5. Graph Definitions
+## 6. Graph Definitions
 
 Before we really get stuck in, we need to go through some definitions which we will refer to during the rest of the lab.
 
@@ -147,7 +184,7 @@ A vertex or edge may include properties, which express non-relational informatio
 
 ----
 
-## 6. Graph Basics
+## 7. Graph Basics
 
 Now that we have connected to our Neptune Cluster, and learnt the basic terminologies on verticies and edges, we can start pushing data into the Graph Database.
 
@@ -168,7 +205,7 @@ and check that we don't have any verticies
 g.V()
 ```
 
-### 6.1 Create a Vertex
+### 7.1 Create a Vertex
 
 ```
 %%gremlin
@@ -188,7 +225,7 @@ g.addV('person').property(id, "bob")
 
 The properties `id` and `label` are reserved attributes for verticies and edges, and therefore are not specified with string denotation.
 
-### 6.2 Create a Vertex with a property
+### 7.2 Create a Vertex with a property
 ```
 %%gremlin
 
@@ -207,7 +244,7 @@ g.addV('person')
     .property('lname', 'jones')
 ```
 
-### 6.3 Show all Verticies - the V is case sensitive!
+### 7.3 Show all Verticies - the V is case sensitive!
 ```
 %%gremlin
 
@@ -221,7 +258,7 @@ You can also show all Verticies and their values, by using the `valueMap` syntax
 g.V().valueMap()
 ```
 
-### 6.4 Drop a specific Vertex
+### 7.4 Drop a specific Vertex
 
 You may need to drop a specific vertex, and can utilise query commands such as `has` to drop. 
 
@@ -243,7 +280,7 @@ g.V().has('name', 'dan').drop()
 g.V().hasLabel('person')
 ```
 
-### 6.5 Edges
+### 7.5 Edges
 
 This example creates an edge between two verticies
 ```
@@ -260,7 +297,7 @@ Breakdown explanation:
 
 ----
 
-## 7. Create a simple social recommendation engine
+## 8. Create a simple social recommendation engine
 
 We are now going to attempt to create a simple social recommendation engine, which follows a couple of rules.
 
@@ -268,7 +305,7 @@ We are now going to attempt to create a simple social recommendation engine, whi
 2. Friends of friends, may be recommended
 3. For simplicity, we will start with a simple rule that *if number of mutual friends is > 2, recommend the friend*
 
-### 7.1 Creation of the Verticies
+### 8.1 Creation of the Verticies
 
 The following code will generate a Graph Database with the following verticies, and edges.
 
@@ -295,7 +332,7 @@ Total Results: 1
 1	e[b8b82641-08fd-dea8-5d35-0cbf5c2393a7][bob-FRIEND->jess]
 ```
 
-### 7.2 Adding more users
+### 8.2 Adding more users
 
 We will expand upon our graph network by adding another user, and making them Jess's friend.
 
@@ -313,7 +350,7 @@ Total Results: 1
 1	e[ceb82646-6ed7-1553-22e2-812b2172753d][jess-FRIEND->charlotte]
 ```
 
-### 7.3 Friend Recommendation
+### 8.3 Friend Recommendation
 
 We can now create a really simple friend recommendation.
 
@@ -331,21 +368,21 @@ What is happening here is that we are `traversing` from `Bob`, and navigating ou
 
 <img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/63_traversal.png" height=300 />
 
-### 7.4 Friend Strengths to Improve Recommendations
+### 8.4 Friend Strengths to Improve Recommendations
 
 What if we wanted to improve our friend strength recommendations based on strengths - instead of just a simple friend value?
 
 Well we can utilise a `strength property` to denote whether the traversal applies, and only traverse if the strength is greater than 1.
 
 
-### 7.4.1 Start by clearing the graph database
+### 8.4.1 Start by clearing the graph database
 ```
 %%gremlin
 
 g.V().drop().iterate()
 ```
 
-### 7.4.2 Create the following Vertex network
+### 8.4.2 Create the following Vertex network
 ![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/7.4.2_neptune.png)
 
 Try and create the above network, you can click below to reveal the code if you get stuck.
@@ -366,7 +403,7 @@ Try and create the above network, you can click below to reveal the code if you 
 
 ----
 
-### 7.4.3 Evaluating paths based strength
+### 8.4.3 Evaluating paths based strength
 
 We will now find outgoing edges from the "bob" vertex, given that "bob's" friendship is above a certain value.
 
@@ -394,7 +431,7 @@ g.V("bob").outE("FRIEND").has("strength", P.gte(1)).otherV()
 
 ----
 
-### 7.4.4 Build the traversal
+### 8.4.4 Build the traversal
 
 We can now build the traversal to do the following:
 
@@ -436,7 +473,7 @@ For more information on graph traversals, [please refer to the Neo4j documentati
 
 ----
 
-### 7.4.5 Changing the traversal
+### 8.4.5 Changing the traversal
 
 Try changing the `gte` value of the queries to see the traversal results change. 
 
@@ -468,7 +505,7 @@ Second strength value is > 0.4, should show 2 results
 
 ----
 
-## Where to from here?
+## 9. Where to from here?
 
 We have only scratched the surface of what we can accomplish with a Graph Database. We can build even more complex relationships - such as item and music recommendations, while including properties and other rules which change what Verticies are able to be traversed.
 
@@ -476,11 +513,11 @@ We have only scratched the surface of what we can accomplish with a Graph Databa
 
 ----
 
-## Extras
+## 10. Extras
 
 ----
 
-## Importing of Data
+## 10.1 Data Import
 
 Amazon Neptune supports bulk loading of external files directly into the Neptune DB instance. This process supports executing a large number of `INSERT`, `addVertex`, `addEdge`, or other API calls.
 
@@ -492,14 +529,14 @@ The Neptune **Loader** supports both RDF (Resource Description Framework) and Gr
 
 ----
 
-## Backups
+## 10.2 Backups
 Amazon Neptune supports cluster snapshots and restoration.
 
 [Please refer to the official documentation to learn more](https://docs.aws.amazon.com/neptune/latest/userguide/backup-restore.html)
 
 ----
 
-## High Availability & Failover
+## 10.3 High Availability & Failover
 
 Amazon Neptune stores copies of the data in a DB cluster across multiple Availablity Zones in a single AWS Region. You must specify to create Neptune replicas across AZs, and if configured will automatically provision and maintain them synchronously.
 
@@ -511,7 +548,7 @@ As of 18-FEB-2020, Neptune supports up to 15 Neptune replicas to process read-on
 
 ----
 
-## Dates
+## 10.4 Dates
 
 Neptune does not support Java Date. Use the datetime() function instead. datetime() accepts an ISO8061-compliant datetime string.
 
@@ -530,7 +567,7 @@ g.V().property(single, 'lastUpdate', datetime('2018-01-01T00:00:00'))
 
 ----
 
-## Iterators and next()
+## 10.5 Iterators and next()
 
 ```
 %%gremlin
@@ -544,6 +581,11 @@ Note
 The `.next()` step does not work with `.drop()`. Use `.iterate()` instead.
 
 ----
+## 11. Final Steps
+
+**Make sure to delete the CloudFormation Script after you have finished this lab, otherwise you will incur additional costs.**
+
+----
 
 ## Copy of Neptune Prebuilt (.ipynb) Resources
 
@@ -554,7 +596,7 @@ The `.next()` step does not work with `.drop()`. Use `.iterate()` instead.
 
 ----
 
-## References
+## 12. References
 
 - Official Documentation
     - https://docs.aws.amazon.com/neptune/latest/userguide/get-started-create-cluster.html
@@ -590,7 +632,7 @@ The `.next()` step does not work with `.drop()`. Use `.iterate()` instead.
 
 ----
 
-## Author & Feedback
+## 13. Author & Feedback
 
 If you have any feedback, concerns or would like to have a chat, please send me an email.
 
