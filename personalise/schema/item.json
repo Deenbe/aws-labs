@@ -1,0 +1,17 @@
+{
+    "type": "record",
+    "name": "Items",
+    "namespace": "com.amazonaws.personalize.schema",
+    "fields": [
+        {
+            "name": "ITEM_ID",
+            "type": "string"
+        },
+        {
+            "name": "NAME",
+            "type": "string",
+            "categorical": true
+        }
+    ],
+    "version": "1.0"
+}

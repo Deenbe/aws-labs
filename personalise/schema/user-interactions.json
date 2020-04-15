@@ -1,0 +1,44 @@
+{
+	"type": "record",
+	"name": "Interactions",
+	"namespace": "com.amazonaws.personalize.schema",
+	"fields": [
+		{
+			"name": "INVOICENO",
+			"type": "string"
+		},
+		{
+			"name": "ITEM_ID",
+			"type": "string"
+		},
+		{
+			"name": "DESCRIPTION",
+			"type": "string"
+		},
+		{
+			"name": "QUANTITY",
+			"type": "string"
+		},
+		{
+			"name": "TIMESTAMP",
+			"type": "long"
+		},
+		{
+			"name": "UNITPRICE",
+			"type": "string"
+		},
+		{
+			"name": "USER_ID",
+			"type": "string"
+		},
+		{
+			"name": "EVENT_TYPE",
+			"type": "string"
+		},
+		{
+			"name": "COUNTRY",
+			"type": "string"
+		}
+	],
+	"version": "1.0"
+}

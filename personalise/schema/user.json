@@ -1,0 +1,22 @@
+{
+    "type": "record",
+    "name": "Users",
+    "namespace": "com.amazonaws.personalize.schema",
+    "fields": [
+        {
+            "name": "USER_ID",
+            "type": "string"
+        },
+        {
+            "name": "AGE",
+            "type": "string",
+            "categorical": true
+        },
+        {
+            "name": "SEX",
+            "type": "string",
+            "categorical": true
+        }
+    ],
+    "version": "1.0"
+}
