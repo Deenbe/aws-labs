@@ -1,9 +1,18 @@
+<div style="text-align:center"><img src="https://d2908q01vomqb2.cloudfront.net/887309d048beef83ad3eabf2a79a64a389ab1c9f/2019/09/06/Neptune.png" /></div>
+
+
+This lab is provided as part of [AWS Builders Online Series](https://aws.amazon.com/events/builders-online-series/).
+
+ℹ️ You will run this lab in your own AWS account. Please follow directions at the end of the lab to remove resources to minimize costs.
+
+--------
+
 ## Creating a simple recommendation engine with Amazon Neptune
 In this lab you will learn the basics of how to use Amazon Neptune in order to create a recommendation system using collaborative filtering.
 
 ### How it works
 
-![image](https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_Neptune.85fa1536c4a013c5f291b930985032d693dd8111.png)
+<img src="https://d1.awsstatic.com/Products/product-name/diagrams/product-page-diagram_Neptune.85fa1536c4a013c5f291b930985032d693dd8111.png" width="750">
 
 -----
 
