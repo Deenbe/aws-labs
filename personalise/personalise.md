@@ -1,6 +1,6 @@
 <div style="text-align:center"></div>
 
-This lab is provided as part of [AWS Builders Online Series](https://aws.amazon.com/events/builders-online-series/).
+This lab is provided as part of [AWS Summit Online](https://aws.amazon.com/events/summits/online/).
 
 ℹ️ You will run this lab in your own AWS account. Please follow directions at the end of the lab to remove resources to minimize costs.
 

@@ -1,7 +1,7 @@
 <div style="text-align:center"><img src="https://d2908q01vomqb2.cloudfront.net/887309d048beef83ad3eabf2a79a64a389ab1c9f/2019/09/06/Neptune.png" /></div>
 
 
-This lab is provided as part of [AWS Builders Online Series](https://aws.amazon.com/events/builders-online-series/).
+This lab is provided as part of [AWS Summit Online](https://aws.amazon.com/events/summits/online/).
 
 ℹ️ You will run this lab in your own AWS account. Please follow directions at the end of the lab to remove resources to minimize costs.
 
