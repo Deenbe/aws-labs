@@ -1,4 +1,4 @@
-<div style="text-align:center"><img src="https://d2908q01vomqb2.cloudfront.net/887309d048beef83ad3eabf2a79a64a389ab1c9f/2019/09/06/Neptune.png" /></div>
+<p align="center"><img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/neptune/neptune_logo.png" width="150" /></p>
 
 
 This lab is provided as part of [AWS Summit Online](https://aws.amazon.com/events/summits/online/).
