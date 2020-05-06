@@ -1,4 +1,6 @@
-<div style="text-align:center"></div>
+<div style="text-align:center">
+    <img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/personalise_logo.png" width="150" />
+</div>  
 
 This lab is provided as part of [AWS Summit Online](https://aws.amazon.com/events/summits/online/).
 
