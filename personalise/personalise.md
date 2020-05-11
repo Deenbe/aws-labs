@@ -2,7 +2,7 @@
     <img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/personalise_logo.png" width="150" />
 </p>
 
-This lab is provided as part of [AWS Summit Online](https://aws.amazon.com/events/summits/online/).
+This lab is provided as part of [AWS Summit Online](https://aws.amazon.com/events/summits/online/), click [here](https://github.com/phonghuule/awssummmitonline) to explore the full list of hands-on labs.
 
 ℹ️ You will run this lab in your own AWS account. Please follow directions at the end of the lab to remove resources to minimize costs.
 
