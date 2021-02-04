@@ -89,9 +89,9 @@ Please download all the files below:
 
 | Name     | Schema | Data File |
 | ---- | ---- | ---- |
-| item.csv | [items_schema.json](https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/schema/item.json) | [item.csv](https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/datasets/item.csv) |
-| users.csv | [users_schema.json](https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/schema/user.json) | [users.csv](https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/datasets/users_parsed.csv) |
-| user-interactions.csv | [user-interactions.json](https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/schema/user-interactions.json) | [user-interactions.csv](https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/datasets/user-interaction.csv) |
+| item.csv | [items_schema.json](./schema/item.json) |[item.csv](./data/item.csv) |
+| users.csv | [users_schema.json](./schema/user.json) | [users.csv](./data/users_parsed.csv) |
+| user-interactions.csv | [user-interactions.json](./schema/user-interactions.json) | [user-interactions.csv](./data/user-interactions.csv) |
 
 ### 2.1 Create a S3 Bucket
 
@@ -261,16 +261,17 @@ Once you have successfully imported all three data types, you may move onto crea
 
 ## 5. Creating & Training your Personalize Solution (~40mins)
 
-Currently, as of 26-MAR-2020, Amazon Personalize in the Sydney region supports the following algorithms:
+Currently, as of 04-FEB-2021, some older algorithms have been deprecated in favour of newer models, so the latest updated list of Amazon Personalize algorithms are as follows:
 
 | Algorithm | Explanation |
 | ---- | ---- |
-| aws-hrnn | Predicts items a user will interact with. A Hierarchical Recurrent Neural Network which models the temporal order of user-item interactions. |
-| aws-hrnn-coldstart | Predicts items a user will interact with. HRNN - metadata with personalized exploration of new items. |
-| aws-hrnn-metadata | Predicts items a user will interact with. HRNN with additional features derived from contextual metadata (user-item interactions metadata), user metadata (user dataset) and item metadata (item dataset). |
-| aws-personalized-ranking | Reranks an input list of items for a given user. Trains on user-item interactions dataset. |
+| aws-sims | Computes items similar to a given item based on co-occurence of items in the user-item interactions dataset |
+| aws-personalized-ranking | Reranks an input list of items for a given user. Trains on user-item interactions dataset, item metadata and user metadata |
+| aws-user-personalization | Predicts items a user will interact with and performs exploration on cold items. Based on Hierarchial Recurrent Neural Networks which model the temporal order of user-item interactions |
 | aws-popularity-count | Calculates popularity of items based on total number of events for each item in the user-item interactions dataset. |
-| aws-sims | Computes items similar to a given item based on co-occurrence of items in the user-item interactions dataset. |
+| aws-hrnn (legacy) | Predicts items a user will interact with. A Hierarchical Recurrent Neural Network which models the temporal order of user-item interactions. |
+| aws-hrnn-coldstart (legacy) | Predicts items a user will interact with. HRNN - metadata with personalized exploration of new items. |
+| aws-hrnn-metadata (legacy) | Predicts items a user will interact with. HRNN with additional features derived from contextual metadata (user-item interactions metadata), user metadata (user dataset) and item metadata (item dataset). |
 
 **Note**
 
