@@ -17,6 +17,8 @@ Amazon Personalize is a service which is based off the same technology used at A
 
 Due to the import, training and creation of a recommendation engine, be prepared for a lengthy time period waiting for the service to finish.
 
+Aamzon Personalize is available in the **Sydney** region. 
+
 For pricing, please refer to the [pricing page](https://aws.amazon.com/personalize/pricing/).
 
 | Estimated Time | Estimated Cost |
@@ -97,13 +99,13 @@ Please download all the files below:
 
 ### 2.1 Create a S3 Bucket
 
-Start by creating a S3 bucket using the Web Console. Leave the public access to default settings. Please remember the name of the bucket as we will be using it in the next couple steps.
+Start by creating a S3 bucket in the **Sydney Region** using the Web Console. Leave the public access to default settings. Please remember the name of the bucket as we will be using it in the next couple steps.
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/02-s3-bucket.png" width=400 />
+<img src="./images/02-s3-bucket.png" width=400 />
 
 Change the bucket policy to allow the Amazon Personalize service access to S3 files: **Permissions > Bucket Policy**
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/02-bucket-permissions.png" width=500 />
+<img src="./images/02-bucket-permissions.png" width=500 />
 
 ```
 {
@@ -135,38 +137,9 @@ Once you have created the S3 Bucket and assigned the permissions, you may upload
 
 ----
 
-## 3. Create IAM Role
+## 3. Create IAM Policy
 
-On the web console, navigate to IAM and click on **Roles > Create Role**.
-
-Create an IAM Role with the following details:
-
-### 3.1 Trusted Entity
-
-AWS Service > Personalize
-
-This will create the role with the following Trusted Relationship:
-
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "personalize.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-```
-
-The trust relationship tab should look like the following:
-
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/03-iam-trust-relationship.png" width=400 />
-
-### 3.2 IAM Role Policies
+We need to create an IAM policy for Amazon Personalize to use.
 
 You'll need two policies attached to this role. The **Amazon Managed Amazon Personalize Full Access** role, and an **inline policy**.
 
@@ -198,9 +171,40 @@ You'll need two policies attached to this role. The **Amazon Managed Amazon Pers
 }
 ```
 
-The attached IAM Policies should look like the following - your policy name may be different:
+For the name of the policy, remember the name you give the policy, but in my example i will use **AmazonPersonalize-ExecutionPolicy**.
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/03-iam-policy.png" width=400 />
+### 3.1 IAM Role Policies
+
+On the web console, navigate to IAM and click on **Roles > Create Role**.
+
+Give the Role a name, such as **AmazonPersonalize-ExecutionRole**.
+
+Attach the policy you have just created, and also attach the managed IAM policy - **AmazonPersonalizeFullAccess**. Attached IAM Policies should look like the following - your policy name may be different:
+
+<img src="./images/03-iam-policy.png" width=400 />
+
+### 3.2 Trusted Entity
+
+On the Role Summary view, click on the **Trust Relationships** tab and edit the trust relationship to look like the following:
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "personalize.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+
+The trust relationship tab should look like the following:
+
+<img src="./images/03-iam-trust-relationship.png" width=400 />
 
 ----
 
@@ -216,17 +220,17 @@ Because this step does take a bit of time to finish, you don't need to wait for 
 
 Start by navigating to the Amazon Personalize using the web console, and click on **View Dataset Groups**.
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/04-personalize-page.png" width=500 />
+<img src="./images/04-personalize-page.png" width=500 />
 
 Then click on **Create Dataset Group**
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/04-1-personalize-page.png" width=500 />
+<img src="./images/04-1-personalize-page.png" width=500 />
 
 ### 4.1 Creating your Dataset
 
 Provide a memorable name for your Dataset group, this dataset will contain items, user and user-interactions.
 
-![01](https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/01-dataset.png)
+<img src="./images/01-dataset.png" height=250>
 
 ### 4.2 Dataset Details & Schema
 
@@ -235,13 +239,13 @@ Make sure the Schema Name is relevant to the dataset you are about to upload.
 
 Start by inputting a memorable dataset name, and click on **Create new Schema**
 
-![02](https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/02-dataset-schema.png)
+<img src="./images/02-dataset-schema.png" height=400>
 
 Then input the schema JSON string from the downloaded file(s) and hit next.
 
 *Be sure to upload the correct schema with the correct dataset type!*
 
-![03](https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/03-dataset-schema.png)
+<img src="./images/03-dataset-schema.png" height=600>
 
 ### 4.3 Importing Data (~30mins)
 
@@ -249,21 +253,21 @@ Fillout the import job name, and if you haven't created an IAM service role, sel
 
 Then fill in the S3 location, taking note the **required S3 url format.**
 
-![04](https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/04-dataset-import.png)
+<img src="./images/04-dataset-import.png" height=400>
 
 The fastest way to copy the correct format for a file is to use the **copy path** option when a S3 item is selected.
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/05-dataset-data.png" width=400>
+<img src="./images/05-dataset-data.png" width=400>
 
 Once you have successfully imported all three data types, you may move onto creating a solution.
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/06-dataset-import.png" height=200>
+<img src="./images/06-dataset-import.png" height=200>
 
 ----
 
 ## 5. Creating & Training your Personalize Solution (~40mins)
 
-Currently, as of 04-FEB-2021, some older algorithms have been deprecated in favour of newer models, so the latest updated list of Amazon Personalize algorithms are as follows:
+Currently, as of 04-FEB-2021, some older algorithms have been deprecated in favour of newer models, so the latest available list of Amazon Personalize algorithms are as follows:
 
 | Algorithm | Explanation |
 | ---- | ---- |
@@ -275,6 +279,17 @@ Currently, as of 04-FEB-2021, some older algorithms have been deprecated in favo
 | aws-hrnn-coldstart (legacy) | Predicts items a user will interact with. HRNN - metadata with personalized exploration of new items. |
 | aws-hrnn-metadata (legacy) | Predicts items a user will interact with. HRNN with additional features derived from contextual metadata (user-item interactions metadata), user metadata (user dataset) and item metadata (item dataset). |
 
+
+## 5.1 Creating the Solution
+
+Click on the **Create solution** button on the personalize dashboard.
+
+Specify a solution name, and select a recipe. Lets use **aws-user-personalization** for this example. You can leave the optional fields blank.
+
+<img src="./images/personalize-solution.png" height=500 />
+
+----
+
 **Note**
 
 If you are seeing an IAM Role permission error, you need to check:
@@ -284,9 +299,11 @@ If you are seeing an IAM Role permission error, you need to check:
 2. IAM Role has policies to access the S3 bucket.  
     ( IAM Role > Policy )
 
-```
-See Step 3 for S3 Bucket & IAM policies
-```
+----
+
+You'll need to wait for the solution to finish, and then you can proceed to the next step.
+
+<img src="./images/personalize-solution-02.png" height=200 />
 
 -----
 
@@ -296,11 +313,13 @@ When Amazon Personalize has finished training the solution, you need to create a
 
 6.1 Click on the "Create a new Campaign" button under Launch campaigns
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/06-campaign-01.png" height=400 />
+<img src="./images/06-campaign-01.png" height=400 />
 
 6.2 Fill in the campaign details and Create the campaign
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/06-campaign-02.png" height=400 />
+<img src="./images/campaign-01.png" height=400 />
+
+6.3 Wait for the campaign to finish creating, and then you can begin to retrieve recommendations.
 
 ----
 
@@ -314,7 +333,7 @@ For simplicity we will be using the web console.
 
 Start by selecting your campaign which you have created:
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/07-solution-01.png" width=400 />
+<img src="./images/recommendation-solution.png" width=500 />
 
 Then you can put a user id into the field, and click **Get Recommendations**.
 
@@ -324,9 +343,9 @@ The **Personalize Score** is a value which may be used to apply additional busin
 
 Please refer to this [recommendation score blog](https://aws.amazon.com/blogs/machine-learning/introducing-recommendation-scores-in-amazon-personalize/) for more information.
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/07-solution-02.png" width=400 />
+<img src="./images/recommendation_user.png" width=400 />
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/07-solution-03.png" width=400 />
+<img src="./images/recommendation_results.png" width=400 />
 
 ----
 
