@@ -286,7 +286,7 @@ Click on the **Create solution** button on the personalize dashboard.
 
 Specify a solution name, and select a recipe. Lets use **aws-user-personalization** for this example. You can leave the optional fields blank.
 
-<img src="./images/personalize-solution.png" height=500 />
+<img src="./images/personalize-solution-01.png" height=500 />
 
 ----
 
