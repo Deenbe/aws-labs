@@ -224,7 +224,7 @@ Start by navigating to the Amazon Personalize using the web console, and click o
 
 Then click on **Create Dataset Group**
 
-<img src="./images/04-1-personalize-page.png" width=500 />
+<img src="./images/04-1-personalize-page.png" height=100 />
 
 ### 4.1 Creating your Dataset
 
@@ -245,7 +245,7 @@ Then input the schema JSON string from the downloaded file(s) and hit next.
 
 *Be sure to upload the correct schema with the correct dataset type!*
 
-<img src="./images/03-dataset-schema.png" height=600>
+<img src="./images/03-dataset-schema.png" height=700>
 
 ### 4.3 Importing Data (~30mins)
 
@@ -320,6 +320,8 @@ When Amazon Personalize has finished training the solution, you need to create a
 <img src="./images/campaign-01.png" height=400 />
 
 6.3 Wait for the campaign to finish creating, and then you can begin to retrieve recommendations.
+
+<img src="./images/campaign-status.png" height="200" />
 
 ----
 
