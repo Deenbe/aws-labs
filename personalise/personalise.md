@@ -17,7 +17,7 @@ Amazon Personalize is a service which is based off the same technology used at A
 
 Due to the import, training and creation of a recommendation engine, be prepared for a lengthy time period waiting for the service to finish.
 
-Aamzon Personalize is available in the **Sydney** region. 
+In this lab, we will be creating and associating resources for Aamzon Personalize in the **Sydney** region. You can easily use Amazon Personalize in [other supported regions](https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/).
 
 For pricing, please refer to the [pricing page](https://aws.amazon.com/personalize/pricing/).
 
@@ -98,6 +98,8 @@ Please download all the files below:
 | user-interactions.csv | [user-interactions.json](./schema/user-interactions.json) | [user-interactions.csv](./data/user-interactions.csv) |
 
 ### 2.1 Create a S3 Bucket
+
+In this lab, we will be creating resources in the **Sydney Region**, you can easily subsitute with another supported region if you are operating in a different region.
 
 Start by creating a S3 bucket in the **Sydney Region** using the Web Console. Leave the public access to default settings. Please remember the name of the bucket as we will be using it in the next couple steps.
 
