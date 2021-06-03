@@ -1,4 +1,4 @@
-<p align="center"><img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/neptune/neptune_logo.png" width="150" /></p>
+<p align="center"><img src="images/neptune_logo.png" width="150" /></p>
 
 
 This lab is provided as part of [AWS Summit Online](https://aws.amazon.com/events/summits/online/), click [here](https://github.com/phonghuule/awssummmitonline) to explore the full list of hands-on labs.
@@ -71,7 +71,7 @@ Gremlin and SparQL are the two main frameworks commonly used with modelling and 
 
 SparQL is an RDF query language - semantic query language for databases.
 
-<img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/gremlin-logo.png" height=150>
+<img src="images/gremlin-logo.png" height=150>
 
 ----
 
@@ -127,7 +127,7 @@ Interactions with the Neptune Database will primarily be managed using Neptune N
 
 5.1.2. Within the Neptune service, click on the Sidebar to expand the menu.
 
-![NeptuneSidebar](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/neptune_sidebar.png)
+![NeptuneSidebar](images/neptune_sidebar.png)
 
 5.1.3. Click on the **Notebooks** option, and click on the **Neptune Notebook** that should have been created for you.
 
@@ -139,7 +139,7 @@ As we have successfully navigated to the Jupyter notebook, from the Amazon Neptu
 
 5.2.1. Clicking on the New dropdown, and select the **Python 3** option
 
-![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/neptune-juypter-setup-01.png)
+![image](images/neptune-juypter-setup-01.png)
 
 5.2.2. A new tab should appear with the document ready for input.
 
@@ -147,7 +147,7 @@ As we have successfully navigated to the Jupyter notebook, from the Amazon Neptu
 
 In the first cell, type in `%status` and hit **run**.
 
-![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/neptune_status.png)
+![image](images/neptune_status.png)
 
 If everything goes according to plan, you should see an output similar to:
 
@@ -193,7 +193,7 @@ A vertex or edge may include properties, which express non-relational informatio
 - A person vertex may include user and age properties
 - A Edge may include timestamp and weight
 
-![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/5_neptune.png)
+![image](images/5_neptune.png)
 
 ----
 
@@ -322,7 +322,7 @@ We are now going to attempt to create a simple social recommendation engine, whi
 
 The following code will generate a Graph Database with the following verticies, and edges.
 
-<img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/6.1_simple_users.png" height=250 />
+<img src="images/6.1_simple_users.png" height=250 />
 
 ```
 %%gremlin
@@ -349,7 +349,7 @@ Total Results: 1
 
 We will expand upon our graph network by adding another user, and making them Jess's friend.
 
-<img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/62_friend.png" height=300 />
+<img src="images/62_friend.png" height=300 />
 
 ```
 %%gremlin
@@ -379,7 +379,7 @@ Total Results: 2
 
 What is happening here is that we are `traversing` from `Bob`, and navigating outwards to other Verticies that are `FRIENDS`. We are then traversing from those `Verticies`, out to other `Friends`.
 
-<img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/63_traversal.png" height=300 />
+<img src="images/63_traversal.png" height=300 />
 
 ### 8.4 Friend Strengths to Improve Recommendations
 
@@ -396,7 +396,7 @@ g.V().drop().iterate()
 ```
 
 ### 8.4.2 Create the following Vertex network
-![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/7.4.2_neptune.png)
+![image](images/7.4.2_neptune.png)
 
 Try and create the above network, you can click below to reveal the code if you get stuck.
 
@@ -430,7 +430,7 @@ The syntax `P` denotes that given an object, evaluate whether the result is `tru
 
 *Question: Will the query above traverse through to both vertexes? Or only through one if applied to the network below?*
 
-![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/7.4.3_neptune.png)
+![image](images/7.4.3_neptune.png)
 
 ----
 
@@ -469,7 +469,7 @@ g.V("bob").outE("FRIEND")           # 1
 e[4ab8264f-b637-ab4e-5001-596ea652439e][jess-FRIEND->charlotte]
 ```
 
-![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/7.4.4_neptune.png)
+![image](images/7.4.4_neptune.png)
 
 Visualising this is easier if you break down the traversal process into 4 distinct steps.
 
@@ -478,7 +478,7 @@ Visualising this is easier if you break down the traversal process into 4 distin
 3. Comparing the edge properties if it fulfils a condition
 4. Entering a vertex from an edge
 
-![image](https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/7.4.4_2_neptune.png)
+![image](images/7.4.4_2_neptune.png)
 
 For more information on graph traversals, [please refer to the Neo4j documentation.](https://neo4j.com/blog/graph-algorithms-neo4j-15-different-graph-algorithms-and-what-they-do/)
 </p>
@@ -639,7 +639,7 @@ The `.next()` step does not work with `.drop()`. Use `.iterate()` instead.
 - Neo4j Traversal Algorithms
     - https://neo4j.com/blog/graph-algorithms-neo4j-15-different-graph-algorithms-and-what-they-do/
 
-<img src="https://st-summit-2020-resources.s3-ap-southeast-2.amazonaws.com/public/images/neptune-lab/gremlin-lab-coat.png" height=200>
+<img src="images/gremlin-lab-coat.png" height=200>
 
 *Special thanks to [Neo4j](https://neo4j.com/), [Apache TinkerPop&trade;](http://tinkerpop.apache.org/), [W3C](https://www.w3.org/) and [Ketrina Yim](https://ketrinayim.tumblr.com/), who is the designer behind Gremlin and his TinkerPop friends.*
 

@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/personalise_logo.png" width="150" />
+    <img src="images/personalise_logo.png" width="150" />
 </p>
 
 This lab is provided as part of **[AWS Innovate AI/ML Edition](https://aws.amazon.com/events/aws-innovate/machine-learning/)**, click [here](https://github.com/phonghuule/aws-innovate-ai-ml) to explore the full list of hands-on labs.
@@ -373,7 +373,7 @@ Please see the documentation [here](https://docs.aws.amazon.com/personalize/late
 
 You can stream events directly into Personalize, [by configuring the Event Tracking and including the SDK in your application](https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html), or [tuning your hyperparameters & HPO](https://docs.aws.amazon.com/personalize/latest/dg/customizing-solution-config-hpo.html).
 
-<img src="https://steven-devlabs.s3-ap-southeast-2.amazonaws.com/public/personalise/lab-images/10-event-ingestion.png" height=300 />
+<img src="images/10-event-ingestion.png" height=300 />
 
 ----
 
