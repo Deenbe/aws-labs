@@ -2,7 +2,7 @@
     <img src="images/personalise_logo.png" width="150" />
 </p>
 
-This lab is provided as part of **[AWS Innovate AI/ML Edition](https://aws.amazon.com/events/aws-innovate/machine-learning/)**, click [here](https://github.com/phonghuule/aws-innovate-ai-ml) to explore the full list of hands-on labs.
+This lab is provided as part of **[AWS Innovate Data Edition](https://aws.amazon.com/events/aws-innovate/data/)**, click [here](https://github.com/phonghuule/aws-innovate-data) to explore the full list of hands-on labs.
 
 :information_source: You will run this lab in your own AWS account. Please follow directions at the end of the lab to remove resources to avoid future costs.
 
@@ -43,8 +43,7 @@ For pricing, please refer to the [pricing page](https://aws.amazon.com/personali
 8. Personalize CLI
 9. Personalize Programmatic SDK
 10. Where to from here?
-11. Survey
-12. Author & Feedback
+11. Author & Feedback
   
 ----
 
@@ -375,6 +374,10 @@ You can stream events directly into Personalize, [by configuring the Event Track
 
 <img src="images/10-event-ingestion.png" height=300 />
 
+With Hyperparameter Tuning, the general approach is to create two models, one with and one without hyperparmeter tuning, in order to compare models and their results. As data and usage patterns drift over time, its generally recommended that you don't retrain models with hyperparameter tuning for every retraining, but instead perform training with hyperparameters on designated time intervals, for example every 6-12 months.
+
+The usage patterns of your data may also change depending on your business usecase, so please reach out to your AWS Account team for additional support.
+
 ----
 
 ## References
@@ -395,11 +398,7 @@ SDK
 Customers
 - [Case Studies](https://aws.amazon.com/personalize/customers/)
 
-## 11. Survey
-Please help us to provide your feedback [here](https://amazonmr.au1.qualtrics.com/jfe/form/SV_b7mXqfAaiIZUnn8?Session=Lab1).
-Participants who complete the surveys from AWS Innovate Online Conference - AI & Machine Learning Edition will receive a gift code for USD25 in AWS credits. AWS credits will be sent via email by 31 March, 2021.
-
-## 12. Author & Feedback
+## 11. Author & Feedback
 
 If you have any feedback, concerns or would like to have a chat, please send me an email.
 
