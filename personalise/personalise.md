@@ -28,22 +28,35 @@ For pricing, please refer to the [pricing page](https://aws.amazon.com/personali
 ----
 
 ## Contents
-1. Concepts & Definitions
-2. Preparing your data
-3. Create IAM Role  
-    3.1 Trust Relationship  
-    3.2 IAM Role Policies  
-4. Creating your Personalize Dataset Group  
-    4.1 Creating your Dataset  
-    4.2 Dataset Details & Schema  
-    4.3 Importing Data
-5. Creating & Training your Personalize Solution
-6. Create a Campaign
-7. Retrieving a Recommendation
-8. Personalize CLI
-9. Personalize Programmatic SDK
-10. Where to from here?
-11. Author & Feedback
+1. [Concepts & Definitions](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#1-concepts--definitions)
+2. [Preparing your data](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#2-preparing-your-data)
+
+    2.1 [Create a S3 Bucket](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#21-create-a-s3-bucket)
+
+3. [Create IAM Policy](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#3-create-iam-policy)
+
+    3.1 [IAM Role Policies](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#31-iam-role-policies)
+
+    3.2 [Trusted Entity](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#32-trusted-entity)
+
+4. [Creating your Personalize Dataset Group](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#4-creating-your-personalize-dataset-group)
+
+    4.1 [Creating your Dataset](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#41-creating-your-dataset)
+
+    4.2 [Dataset Details & Schema](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#42-dataset-details--schema)
+
+    4.3 [Importing Data](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#43-importing-data-30mins)
+
+5. [Creating & Training your Personalize Solution](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#5-creating--training-your-personalize-solution-40mins)
+
+    5.1 [Creating the Solution](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#51-creating-the-solution)
+    
+6. [Create a Campaign](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#6-create-a-campaign-20mins)
+7. [Retrieving a Recommendation](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#7-retrieving-a-recommendation)
+8. [Personalize CLI](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#8-personalize-cli)
+9. [Personalize Programmatic SDK](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#9-personalize-programmatic-sdk)
+10. [Where to from here?](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#10-where-to-from-here)
+11. [Author & Feedback](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#11-author--feedback)
   
 ----
 
