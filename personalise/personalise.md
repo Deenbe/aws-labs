@@ -32,7 +32,6 @@ For pricing, please refer to the [pricing page](https://aws.amazon.com/personali
 2. [Preparing your data](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#2-preparing-your-data)
 
     2.1 [Create a S3 Bucket](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#21-create-a-s3-bucket)
-
 3. [Create IAM Policy](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#3-create-iam-policy)
 
     3.1 [IAM Role Policies](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#31-iam-role-policies)
