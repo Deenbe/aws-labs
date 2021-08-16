@@ -52,7 +52,8 @@ For pricing, please refer to the [pricing page](https://aws.amazon.com/personali
 8. [Personalize CLI](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#8-personalize-cli)
 9. [Personalize Programmatic SDK](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#9-personalize-programmatic-sdk)
 10. [Where to from here?](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#10-where-to-from-here)
-11. [Author & Feedback](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#11-author--feedback)
+11. [Survey](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#11-survey)
+12. [Author & Feedback](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#11-author--feedback)
   
 ----
 
@@ -409,7 +410,11 @@ SDK
 Customers
 - [Case Studies](https://aws.amazon.com/personalize/customers/)
 
-## 11. Author & Feedback
+## 11. Survey
+
+Please help us to provide your feedback [here](https://amazonmr.au1.qualtrics.com/jfe/form/SV_3a6rNirgLrWYRW6?Session=HOL03). Participants who complete the surveys from AWS Innovate Online Conference - Data Edition will receive a gift code for USD25 in AWS credits. AWS credits will be sent via email by 30 September, 2021.
+
+## 12. Author & Feedback
 
 If you have any feedback, concerns or would like to have a chat, please send me an email.
 
