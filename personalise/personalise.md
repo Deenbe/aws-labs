@@ -11,7 +11,7 @@ This lab is provided as part of **[AWS Innovate Data Edition](https://aws.amazon
 ## Creating a recommendation using Amazon Personalize
 In this lab you will learn the basics of how to use Amazon Personalize in order to create a recommendation system. Be aware that the data upload and training steps do take a long period to perform. 
 
-Amazon Personalize is a service which is based off the same technology used at Amazon.com. It is designed for users who would like to have a managed recommendation engine, but may not have the experience required to build their own. 
+Amazon Personalize is a service which is based off the same technology used at Amazon.com. Amazon Personalize is designed for users who would like to have a managed recommendation engine, but may not have the experience required to build their own.
 
 ![image](https://d1.awsstatic.com/r2018/r/Concierge/product-page-diagram_amazon_personalize_how-it-works.3ceac8883c7d6bd67d7cf26d8a7d505520d02a40.png)
 
