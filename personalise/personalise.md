@@ -37,7 +37,6 @@ For pricing, please refer to the [pricing page](https://aws.amazon.com/personali
     3.1 [IAM Role Policies](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#31-iam-role-policies)
 
     3.2 [Trusted Entity](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#32-trusted-entity)
-
 4. [Creating your Personalize Dataset Group](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#4-creating-your-personalize-dataset-group)
 
     4.1 [Creating your Dataset](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#41-creating-your-dataset)
@@ -45,11 +44,9 @@ For pricing, please refer to the [pricing page](https://aws.amazon.com/personali
     4.2 [Dataset Details & Schema](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#42-dataset-details--schema)
 
     4.3 [Importing Data](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#43-importing-data-30mins)
-
 5. [Creating & Training your Personalize Solution](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#5-creating--training-your-personalize-solution-40mins)
 
     5.1 [Creating the Solution](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#51-creating-the-solution)
-    
 6. [Create a Campaign](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#6-create-a-campaign-20mins)
 7. [Retrieving a Recommendation](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#7-retrieving-a-recommendation)
 8. [Personalize CLI](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#8-personalize-cli)
@@ -144,9 +141,9 @@ Change the bucket policy to allow the Amazon Personalize service access to S3 fi
 }
 ```
 
-The reason we need to do this is that the Amazon Personalize service will need access to this S3 bucket, and its best practice to assign least privilege permissions.
+The reason we need to do this is due to the Amazon Personalize service needing access to our S3 bucket, and its generally best practice to assign least privilege permissions.
 
-Once you have created the S3 Bucket and assigned the permissions, you may upload the **data files** into the bucket. You will reference the S3 Path shortly in a later step. 
+Once you have created the S3 Bucket and assigned the permissions, you may upload the **data files** into the bucket. We will reference the S3 Path shortly in a later step. 
 
 ----
 
@@ -218,6 +215,8 @@ On the Role Summary view, click on the **Trust Relationships** tab and edit the 
 The trust relationship tab should look like the following:
 
 <img src="./images/03-iam-trust-relationship.png" width=400 />
+
+We perform this action in order to allow the Amazon Personalize service to *assume* this role, in order to perform actions against other AWS services. If we don't perform this step, we will encounter an IAM permission error.
 
 ----
 
