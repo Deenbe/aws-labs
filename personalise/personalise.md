@@ -52,8 +52,9 @@ For pricing, please refer to the [pricing page](https://aws.amazon.com/personali
 8. [Personalize CLI](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#8-personalize-cli)
 9. [Personalize Programmatic SDK](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#9-personalize-programmatic-sdk)
 10. [Where to from here?](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#10-where-to-from-here)
-11. [Survey](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#11-survey)
-12. [Author & Feedback](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#11-author--feedback)
+11. [ML Ops, Automation, Filtering and Leveraging Contextual Information](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#11-ML-Ops,-Automation,-Filtering-and-Leveraging-Contextual-Information)
+12. [Survey](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#12-survey)
+13. [Author & Feedback](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#13-author--feedback)
   
 ----
 
@@ -392,6 +393,27 @@ The usage patterns of your data may also change depending on your business useca
 
 ----
 
+## 11. ML Ops, Automation, Filtering and Leveraging Contextual Information
+
+ML Ops is rapidly gaining traction, and is outside the scope of this lab, but this link showcases how you may use AWS Step Functions to construct an automation pipeline. The benefits of using Step Functions is both because Step Functions is a scalable state machine used to orchestrate and automate business processes, but supports business logic with try/catch, errors and rollback capabilities.
+
+[Amazon Personalise AI/ML Ops - Automation](https://github.com/aws-samples/amazon-personalize-samples/tree/master/next_steps/operations/ml_ops)
+
+### Dynamic Filtering
+
+So you have trained your first Amazon Personalize model, and you want to apply business rules to your recommendations on the fly, without additional cost. You can use Dynamic Filters without the need to define all possible permutations of your business rules in advance. In the eCommerce example, this could be brand names, shipping speeds, or ratings. For Video usecases, this could be directors, actors or even premium service subscription status.
+
+[Applying business rules to Amazon Personalize by using Dynamic Filtering](https://aws.amazon.com/blogs/machine-learning/amazon-personalize-now-supports-dynamic-filters-for-applying-business-rules-to-your-recommendations-on-the-fly/)
+
+
+### Contextual Information
+With your application, you might have a business workflow where context matters, such as device type, location, time of day or other information that you provide. Users may interact with your application differently from a phone vs. a computer, or even on rainy vs. sunny days. Leverging this contextual information lets you provide an even higher level of personalisation experience for your users, and can reduce the cold-start phase for new users.
+
+[Increasing the relevance of your Amazon Personalize recommendations by leveraging contextual information](https://aws.amazon.com/blogs/machine-learning/increasing-the-relevance-of-your-amazon-personalize-recommendations-by-leveraging-contextual-information/)
+
+
+----
+
 ## References
 
 - [Amazon Personalize Product Page](https://aws.amazon.com/personalize/)
@@ -410,11 +432,11 @@ SDK
 Customers
 - [Case Studies](https://aws.amazon.com/personalize/customers/)
 
-## 11. Survey
+## 12. Survey
 
 Please help us to provide your feedback [here](https://amazonmr.au1.qualtrics.com/jfe/form/SV_3a6rNirgLrWYRW6?Session=HOL03). Participants who complete the surveys from AWS Innovate Online Conference - Data Edition will receive a gift code for USD25 in AWS credits. AWS credits will be sent via email by 30 September, 2021.
 
-## 12. Author & Feedback
+## 13. Author & Feedback
 
 If you have any feedback, concerns or would like to have a chat, please send me an email.
 
