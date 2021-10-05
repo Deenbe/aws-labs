@@ -52,7 +52,7 @@ For pricing, please refer to the [pricing page](https://aws.amazon.com/personali
 8. [Personalize CLI](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#8-personalize-cli)
 9. [Personalize Programmatic SDK](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#9-personalize-programmatic-sdk)
 10. [Where to from here?](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#10-where-to-from-here)
-11. [ML Ops, Automation, Filtering and Leveraging Contextual Information](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#11-ML-Ops,-Automation,-Filtering-and-Leveraging-Contextual-Information)
+11. [ML Ops, Automation, Filtering and Leveraging Contextual Information](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#11-ml-ops-automation-filtering-and-leveraging-contextual-information)
 12. [Survey](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#12-survey)
 13. [Author & Feedback](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#13-author--feedback)
   
