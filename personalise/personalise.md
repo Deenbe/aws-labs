@@ -53,8 +53,7 @@ For pricing, please refer to the [pricing page](https://aws.amazon.com/personali
 9. [Personalize Programmatic SDK](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#9-personalize-programmatic-sdk)
 10. [Where to from here?](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#10-where-to-from-here)
 11. [ML Ops, Automation, Filtering and Leveraging Contextual Information](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#11-ml-ops-automation-filtering-and-leveraging-contextual-information)
-12. [Survey](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#12-survey)
-13. [Author & Feedback](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#13-author--feedback)
+12. [Author & Feedback](https://github.com/Deenbe/aws-labs/blob/master/personalise/personalise.md#13-author--feedback)
   
 ----
 
@@ -432,11 +431,7 @@ SDK
 Customers
 - [Case Studies](https://aws.amazon.com/personalize/customers/)
 
-## 12. Survey
-
-Please help us to provide your feedback [here](https://amazonmr.au1.qualtrics.com/jfe/form/SV_3a6rNirgLrWYRW6?Session=HOL03). Participants who complete the surveys from AWS Innovate Online Conference - Data Edition will receive a gift code for USD25 in AWS credits. AWS credits will be sent via email by 30 September, 2021.
-
-## 13. Author & Feedback
+## 12. Author & Feedback
 
 If you have any feedback, concerns or would like to have a chat, please send me an email.
 
